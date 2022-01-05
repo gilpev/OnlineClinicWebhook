@@ -17,3 +17,73 @@
 	4) check that the data is valid mime/type of video
 	5) put the file downloaded in designated folder
 	6) save path to file in data base along with some data from the data file 
+
+----- order to create new user for database
+=> CREATE USER 'webhook@localhost' IDENTIFIED WITH mysql_native_password BY 'webhook1111';
+=> GRANT ALL PRIVILEGES ON webhook_assigment.* TO 'webhook@localhost';
+=> FLUSH PRIVILEGES;
+=> CREATE DATABASE webhook_assignment;
+=> quit
+
+----- connect to mysql from cmd
+=> mysql.exe -u webhook@localhost -p
+=> then when asked enter the password you created for this user
+
+
+--------- WEBHOOK EXAMPLE --------------
+{
+"payload": {
+	"account_id": "Xpf6gffkTau8m82CtdkA0w",
+	"object": {
+		"uuid": "uLkGK5KMSAySj/rjT1xKSg==",
+		"id": 93693219317, 
+		"account_id": "Xpf6gffkTau8m82CtdkA0w",
+		"host_id": "kUNOA8suQAq_J1xZGVN5yA", 
+		"topic": "Zoom Meeting", 
+		"type": 3, 
+		"start_time": "2021-10-03T07:47:21Z", 
+		"timezone": "America/Edmonton", 
+		"host_email": "danielateleosdothealth-zoom@eleos.health", 
+		"duration": 4, 
+		"total_size": 9696222, 
+		"recording_count": 2, 
+		"share_url": "****", 
+		"recording_files": [
+			{
+				"id": "63070e1c-4b6d-4182-b3d1-f35fd24c0130", 
+				"meeting_id": "uLkGK5KMSAySj/rjT1xKSg==", 
+				"recording_start": "2021-10-03T07:47:21Z", 
+				"recording_end": "2021-10-03T07:52:07Z", 
+				"file_type": "M4A", 
+				"file_extension": "M4A", 
+				"file_size": 4556493, 
+				"play_url": "****", 
+				"download_url": "https://drive.google.com/u/0/uc?id=1YCBONzB6EKSsDhJDQIjhI2xWMnP68V6i&export=download",	
+	 			"status": "completed",
+				"recording_type": "audio_only"
+			}, 
+			{
+				"id": "fa5daefb-b78c-42f0-9471-49ff4f74a10b", 
+				"meeting_id": "uLkGK5KMSAySj/rjT1xKSg==", 
+				"recording_start": "2021-10-03T07:47:21Z", 
+				"recording_end": "2021-10-03T07:52:07Z", 
+				"file_type": "MP4", 
+				"file_extension": "MP4", 
+				"file_size": 5139729, 
+				"play_url": "****", 
+				"download_url": "https://drive.google.com/u/0/uc?id=1YCBONzB6EKSsDhJDQIjhI2xWMnP68V6i&export=download",
+				"status": "completed", 
+				"recording_type": "shared_screen_with_speaker_view"
+			}
+		], 
+		"password": "x?v"
+		}
+	}, 
+	"event_ts": 1633247570040, 
+	"event": "recording.completed", 
+	"download_token": ".*****1Sg", 
+	"receiver_utc_iso_time": "2021-10-03T07:53:05Z"
+}
+
+
+

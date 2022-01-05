@@ -1,0 +1,31 @@
+{
+  "name": "assignment",
+  "version": "1.0.0",
+  "description": "download recording from url provided in webhook object",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gilpev/OnlineClinicWebhook.git"
+  },
+  "author": "Grigori Pevzner",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gilpev/OnlineClinicWebhook/issues"
+  },
+  "homepage": "https://github.com/gilpev/OnlineClinicWebhook#readme",
+  "dependencies": {
+    "axios": "^0.24.0",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.2",
+    "mysql": "^2.18.1",
+    "postgrator": "^4.3.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
