@@ -1,0 +1,19 @@
+
+-- set up data base with migrations for data to store
+
+-- keep a env file for environment variables
+
+-- set up a server with structured file structure with webhook end-point
+   make validations on file type before storing it on public folder
+
+-- if have time create simple front end to check the functionality..
+
+-- second implamentation is using cloud storing for the videos and storing the link in data-base depends on the needs and restrictions 
+
+-- proccess in route => 
+	1) get the data from body and pass to function that handles it..
+	2) respond quickly that you recieved the message with 200 res status
+	3) do all the work needed in the function that got the data
+	4) check that the data is valid mime/type of video
+	5) put the file downloaded in designated folder
+	6) save path to file in data base along with some data from the data file 
