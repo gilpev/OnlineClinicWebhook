@@ -5,9 +5,18 @@ const path = require('path');
 const axios = require('axios');
 const { postgrator } = require('./config/db');
 require('dotenv').config();
+// console.log(process.env.PORT, process.env.HOST);
+
+app.use(express.json({limit: '500mb'}));
+app.use(express.urlencoded({limit: '500mb'}));
 
 // use Routes
-app.use('/webhook', require('./routes/webhook'))
+app.use('/webhook', require('./routes/webhook.js'))
+
+// const returned = downloadImage();
+// console.log(returned);
+// returned.then(msg => console.log(msg));
+// returned.catch(msg => console.log(msg));
 
 postgrator.migrate()
   .then((result) => {
