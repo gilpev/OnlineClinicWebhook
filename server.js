@@ -1,14 +1,22 @@
 const express = require('express');
 const app = express();
 const fs = require('fs');
-const path = require('path');  
-const axios = require('axios');
 const { postgrator } = require('./config/db');
 require('dotenv').config();
+
+const dir = './recordings'
+
+fs.mkdir(dir, (err) => {
+  if(err){
+    console.log('The directory already exists!')
+  } else {
+    console.log('Successfully created a new directory')
+  }
+})
 // console.log(process.env.PORT, process.env.HOST);
 
 app.use(express.json({limit: '500mb'}));
-app.use(express.urlencoded({limit: '500mb'}));
+// app.use(express.urlencoded({limit: '500mb'}));
 
 // use Routes
 app.use('/webhook', require('./routes/webhook.js'))
