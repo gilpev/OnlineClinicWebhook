@@ -13,18 +13,11 @@ fs.mkdir(dir, (err) => {
     console.log('Successfully created a new directory')
   }
 })
-// console.log(process.env.PORT, process.env.HOST);
 
 app.use(express.json({limit: '500mb'}));
-// app.use(express.urlencoded({limit: '500mb'}));
 
 // use Routes
 app.use('/webhook', require('./routes/webhook.js'))
-
-// const returned = downloadImage();
-// console.log(returned);
-// returned.then(msg => console.log(msg));
-// returned.catch(msg => console.log(msg));
 
 postgrator.migrate()
   .then((result) => {
