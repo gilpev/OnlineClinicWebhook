@@ -2,11 +2,11 @@ const express = require('express');
 const router = express.Router();
 const {getUsedData} = require('../middleware/getUsedData');
 const {downloadRecording, createDirForRecording} = require('../lib/downloadRecording');
+const { addToDataBase } = require('../quries/webhookQueries');
 
 router.post('/recording',getUsedData, async (req, res) => {
     const useData = req.useData;
     const files = req.filesArr;
-    console.log(files);
     try {
         const dirPath = await createDirForRecording(useData.id);
         if(!dirPath){
@@ -23,20 +23,20 @@ router.post('/recording',getUsedData, async (req, res) => {
                     msg: `Failed to download`
                 });
             }
-            console.log(useData, file, filePath);
-            // await addToDataBase(useData, file, filePath);
+            const response = await addToDataBase(useData, file, filePath);
         }
+        res.status(200).json({
+            success: true,
+            msg: `Recordings downloaded successfully and added to database`
+        })
     } catch (err) {
+        console.log(err.message);
         res.status(500).json({
             success: false,
-            msg: `Server error`
+            msg: `Server error`,
+            err_msg: err.message
         })
     }
-    // const {download_url, file_extension, id } = files[0];
-    // const {download_url:d2, file_extension:f2, id:id2 } = files[1];
-
-    // console.log(payload);
-    // console.log(files);
 })
 
 module.exports = router;

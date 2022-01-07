@@ -13,11 +13,11 @@ const getUsedData = (req, res, next) => {
     req.useData = {uuid, id, total_size, host_email, timezone, recording_count};
     for(const file of files){
         const { 
-            meeting_id, recording_start, recording_end, 
+            meeting_id, recording_start, recording_end, id, 
             file_extension, file_size, recording_type, download_url 
         } = file;
 
-        if(!meeting_id || !recording_start || !recording_end || 
+        if(!meeting_id || !recording_start || !recording_end || !id ||
             !file_extension || !file_size || !recording_type || !download_url){
             return res.status(400).json({ 
                 msg: 'Incomplete Data',
@@ -25,7 +25,7 @@ const getUsedData = (req, res, next) => {
             }); 
         }
         filesArr.push({
-            meeting_id, recording_start, recording_end, 
+            meeting_id, recording_start, recording_end, id, 
             file_extension, file_size, recording_type, download_url
         });
     }
